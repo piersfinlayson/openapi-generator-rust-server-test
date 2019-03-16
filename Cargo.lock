@@ -1,0 +1,4 @@
+[[package]]
+name = "openapi-generator-rust-server-test"
+version = "0.1.0"
+
