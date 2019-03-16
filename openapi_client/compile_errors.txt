@@ -1,0 +1,98 @@
+   Compiling openapi_client v0.1.0 (/home/build/builds/openapi-generator-rust-server-test/openapi_client)
+error[E0603]: module `models` is private
+  --> src/lib.rs:66:35
+   |
+66 |     fn a_post(&self, arg: models::models::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>>;
+   |                                   ^^^^^^
+
+error[E0603]: module `models` is private
+  --> src/lib.rs:77:35
+   |
+77 |     fn a_post(&self, arg: models::models::models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>>;
+   |                                   ^^^^^^
+
+error[E0603]: module `models` is private
+   --> src/lib.rs:101:35
+    |
+101 |     fn a_post(&self, arg: models::models::models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>> {
+    |                                   ^^^^^^
+
+error[E0603]: module `models` is private
+   --> src/client/mod.rs:332:41
+    |
+332 |     fn a_post(&self, param_arg: models::models::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>> {
+    |                                         ^^^^^^
+
+error[E0603]: module `models` is private
+   --> src/server/mod.rs:208:70
+    |
+208 |                     Ok(param_arg) => match param_arg.parse::<models::models::models::Arg>() {
+    |                                                                      ^^^^^^
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+   --> src/server/mod.rs:210:173
+    |
+210 |                         Err(e) => return Box::new(future::ok(Response::new().with_status(StatusCode::BadRequest).with_body(format!("Couldn't parse path parameter arg: {}", e)))),
+    |                                                                                                                                                                             ^ `()` cannot be formatted with the default formatter
+    |
+    = help: the trait `std::fmt::Display` is not implemented for `()`
+    = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+    = note: required by `std::fmt::Display::fmt`
+
+error[E0308]: mismatched types
+  --> src/models.rs:43:23
+   |
+43 |             "0" => Ok(Arg::_0),
+   |                       ^^^^^^^
+   |                       |
+   |                       expected struct `std::string::String`, found enum `models::Arg`
+   |                       help: try using a conversion method: `Arg::_0.to_string()`
+   |
+   = note: expected type `std::string::String`
+              found type `models::Arg`
+
+error[E0308]: match arms have incompatible types
+  --> src/models.rs:42:9
+   |
+42 | /         match s {
+43 | |             "0" => Ok(Arg::_0),
+   | |                    ----------- match arm with an incompatible type
+44 | |             "1" => Ok(Arg::_1),
+45 | |             "2" => Ok(Arg::_2),
+46 | |             _ => Err(()),
+47 | |         }
+   | |_________^ expected enum `std::result::Result`, found struct `models::Ok`
+   |
+   = note: expected type `std::result::Result<models::Arg, ()>`
+              found type `models::Ok`
+
+error[E0308]: mismatched types
+  --> src/models.rs:44:23
+   |
+44 |             "1" => Ok(Arg::_1),
+   |                       ^^^^^^^
+   |                       |
+   |                       expected struct `std::string::String`, found enum `models::Arg`
+   |                       help: try using a conversion method: `Arg::_1.to_string()`
+   |
+   = note: expected type `std::string::String`
+              found type `models::Arg`
+
+error[E0308]: mismatched types
+  --> src/models.rs:45:23
+   |
+45 |             "2" => Ok(Arg::_2),
+   |                       ^^^^^^^
+   |                       |
+   |                       expected struct `std::string::String`, found enum `models::Arg`
+   |                       help: try using a conversion method: `Arg::_2.to_string()`
+   |
+   = note: expected type `std::string::String`
+              found type `models::Arg`
+
+error: aborting due to 10 previous errors
+
+Some errors occurred: E0277, E0308, E0603.
+For more information about an error, try `rustc --explain E0277`.
+error: Could not compile `openapi_client`.
+
