@@ -12,7 +12,7 @@ paths:
       responses:
         200:
           content:
-            text/x-yaml:
+            text/plain:
               example: ok
               schema:
                 $ref: '#/components/schemas/ok'
@@ -24,7 +24,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
           description: Not found
-  /a_post:
+  /a_post/{arg}:
     post:
       description: Posts some stuff
       operationId: a_post
@@ -41,7 +41,7 @@ paths:
       responses:
         200:
           content:
-            text/x-yaml:
+            text/plain:
               example: ok
               schema:
                 $ref: '#/components/schemas/ok'
