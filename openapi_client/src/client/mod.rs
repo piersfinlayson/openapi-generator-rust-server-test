@@ -329,7 +329,7 @@ impl<F, C> Api<C> for Client<F> where
 
     }
 
-    fn a_post(&self, param_arg: models::models::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>> {
+    fn a_post(&self, param_arg: models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>> {
         let mut uri = format!(
             "{}/a_post/{arg}",
             self.base_path, arg=utf8_percent_encode(&param_arg.to_string(), ID_ENCODE_SET)

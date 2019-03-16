@@ -63,7 +63,7 @@ pub trait Api<C> {
     fn a_get(&self, context: &C) -> Box<Future<Item=AGetResponse, Error=ApiError>>;
 
 
-    fn a_post(&self, arg: models::models::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>>;
+    fn a_post(&self, arg: models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>>;
 
 }
 
@@ -74,7 +74,7 @@ pub trait ApiNoContext {
     fn a_get(&self) -> Box<Future<Item=AGetResponse, Error=ApiError>>;
 
 
-    fn a_post(&self, arg: models::models::models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>>;
+    fn a_post(&self, arg: models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>>;
 
 }
 
@@ -98,7 +98,7 @@ impl<'a, T: Api<C>, C> ApiNoContext for ContextWrapper<'a, T, C> {
     }
 
 
-    fn a_post(&self, arg: models::models::models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>> {
+    fn a_post(&self, arg: models::Arg) -> Box<Future<Item=APostResponse, Error=ApiError>> {
         self.api().a_post(arg, &self.context())
     }
 

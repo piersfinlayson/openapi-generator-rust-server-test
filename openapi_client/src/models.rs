@@ -40,9 +40,9 @@ impl ::std::str::FromStr for Arg {
     type Err = ();
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "0" => Ok(Arg::_0),
-            "1" => Ok(Arg::_1),
-            "2" => Ok(Arg::_2),
+            "0" => Result::Ok(Arg::_0),
+            "1" => Result::Ok(Arg::_1),
+            "2" => Result::Ok(Arg::_2),
             _ => Err(()),
         }
     }

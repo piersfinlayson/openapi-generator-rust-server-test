@@ -205,9 +205,9 @@ where
                     );
 
                 let param_arg = match percent_encoding::percent_decode(path_params["arg"].as_bytes()).decode_utf8() {
-                    Ok(param_arg) => match param_arg.parse::<models::models::models::Arg>() {
+                    Ok(param_arg) => match param_arg.parse::<models::Arg>() {
                         Ok(param_arg) => param_arg,
-                        Err(e) => return Box::new(future::ok(Response::new().with_status(StatusCode::BadRequest).with_body(format!("Couldn't parse path parameter arg: {}", e)))),
+                        Err(e) => return Box::new(future::ok(Response::new().with_status(StatusCode::BadRequest).with_body(format!("Couldn't parse path parameter arg: {}", param_arg)))),
                     },
                     Err(_) => return Box::new(future::ok(Response::new().with_status(StatusCode::BadRequest).with_body(format!("Couldn't percent-decode path parameter as UTF-8: {}", &path_params["arg"]))))
                 };
