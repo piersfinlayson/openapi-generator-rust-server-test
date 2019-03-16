@@ -13,7 +13,6 @@ use std::marker::PhantomData;
 use hyper;
 use openapi_client;
 use swagger::{Has, XSpanIdString};
-use swagger::auth::Authorization;
 
 pub struct NewService<C>{
     marker: PhantomData<C>

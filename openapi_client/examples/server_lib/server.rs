@@ -37,7 +37,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString>{
     }
 
 
-    fn a_post(&self, arg: models::models::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>> {
+    fn a_post(&self, arg: openapi_client::models::Arg, context: &C) -> Box<Future<Item=APostResponse, Error=ApiError>> {
         let context = context.clone();
         println!("a_post({:?}) - X-Span-ID: {:?}", arg, context.get().0.clone());
         Box::new(futures::failed("Generic failure".into()))

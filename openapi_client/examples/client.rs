@@ -77,7 +77,7 @@ fn main() {
          },
 
         Some("APost") => {
-            let result = core.run(client.a_post(serde_json::from_str::<models::models::models::Arg>("1").expect("Failed to parse JSON example")));
+            let result = core.run(client.a_post(serde_json::from_str::<openapi_client::models::Arg>("1").expect("Failed to parse JSON example")));
             println!("{:?} (X-Span-ID: {:?})", result, (client.context() as &Has<XSpanIdString>).get().clone());
          },
 
